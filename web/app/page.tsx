@@ -154,7 +154,7 @@ export default function Home() {
         </form>
       )}
 
-      <div className="absolute top-8 right-32">
+      <div className="max-sm:mt-12 md:absolute top-8 right-32">
         <Leaderboard />
       </div>
     </div>
