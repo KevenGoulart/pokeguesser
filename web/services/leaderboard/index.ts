@@ -1,12 +1,14 @@
 import axios from "axios";
 
 export async function getLeaderboard() {
-  const { data } = await axios.get("http://localhost:3333/leaderboard");
+  const { data } = await axios.get(
+    "https://pokeguesser-kihb.onrender.com/leaderboard"
+  );
   return data;
 }
 
 export async function addToLeaderboard(username: string, score: number) {
-  await axios.post("http://localhost:3333/leaderboard", {
+  await axios.post("https://pokeguesser-kihb.onrender.com/leaderboard", {
     username,
     score,
   });
