@@ -70,8 +70,14 @@ export default function Home() {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center gap-2 relative">
-      <h1 className="text-center mt-6 font-semibold text-6xl">PokeGuesser</h1>
+    <div className="flex flex-col items-center gap-2 relative bg-linear-to-b from-blue-900 to-yellow-300/50 h-screen">
+      <Image
+        src="/pokeguesser.png"
+        alt="title"
+        width={400}
+        height={200}
+        className="mt-6 mb-4"
+      />
 
       {isLoading && (
         <p className="text-2xl font-semibold my-6">Carregando...</p>
@@ -99,7 +105,7 @@ export default function Home() {
             placeholder="Seu nome..."
             value={playerName}
             onChange={(e) => setPlayerName(e.target.value)}
-            className="text-center"
+            className="text-center max-w-28 h-10 mx-auto placeholder:text-white/80"
           />
         </form>
       )}
@@ -114,7 +120,7 @@ export default function Home() {
             className="border border-white/20 rounded-[60px] mb-4 bg-white/15"
           />
           <div className="flex items-center justify-between gap-2">
-            <div className="flex flex-col gap-1 text-lg text-white/90">
+            <div className="flex flex-col gap-1 text-xl text-white/90">
               <strong>Altura: {formatHeight(data.height)} m</strong>
               <strong>Peso: {formatWeight(data.weight)} kg</strong>
 
@@ -142,7 +148,7 @@ export default function Home() {
           <div className="flex items-center gap-2">
             <Input
               placeholder="Quem é esse pokémon?"
-              className="max-w-48 text-center"
+              className="max-w-44 h-12 text-center placeholder:text-white/80 rounded-xl"
               value={guess}
               onChange={(e) => setGuess(e.target.value)}
             />
