@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@9am/fire-flame-react':
+        specifier: ^0.3.2
+        version: 0.3.2
       '@radix-ui/react-avatar':
         specifier: ^1.1.11
         version: 1.1.11(@types/react-dom@19.2.3(@types/react@19.2.7))(@types/react@19.2.7)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
@@ -95,6 +98,12 @@ importers:
         version: 5.9.3
 
 packages:
+
+  '@9am/fire-flame-react@0.3.2':
+    resolution: {integrity: sha512-rNrX5qJvay0HLX8TisGR7dW9ib595DUHxVTj3bnaao3itGwNVPw+AAgrErZ3AaFYN90R3dEsCJMIVCJFho3yjw==}
+
+  '@9am/fire-flame@0.3.2':
+    resolution: {integrity: sha512-+51rjLA2cpvPPPPqBOUbxyGvy/MHlKL+2+Ljgm6yzC42X/rmnNaJGzLTc0NOHoJKmGRaaZX3cSzn4G1GSw2Jcw==}
 
   '@alloc/quick-lru@5.2.0':
     resolution: {integrity: sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==}
@@ -2499,6 +2508,12 @@ packages:
     resolution: {integrity: sha512-AvvthqfqrAhNH9dnfmrfKzX5upOdjUVJYFqNSlkmGf64gRaTzlPwz99IHYnVs28qYAybvAlBV+H7pn0saFY4Ig==}
 
 snapshots:
+
+  '@9am/fire-flame-react@0.3.2':
+    dependencies:
+      '@9am/fire-flame': 0.3.2
+
+  '@9am/fire-flame@0.3.2': {}
 
   '@alloc/quick-lru@5.2.0': {}
 
