@@ -12,11 +12,11 @@ export default function Leaderboard() {
   return (
     <div>
       <Image src="/ranking.png" alt="ranking" width={150} height={100} />
-      <ul className="space-y-2">
+      <ul className="space-y-2 mt-2">
         {data?.map((user, index) => (
           <li
             key={user.id}
-            className="flex justify-between bg-slate-800 p-3 rounded-lg"
+            className="flex justify-between bg-blue-900/70 p-3 rounded-xl"
           >
             <span className="font-semibold">
               {index + 1} - {user.username}
