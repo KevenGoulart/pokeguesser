@@ -16,7 +16,7 @@ export default function Leaderboard() {
         {data?.map((user, index) => (
           <li
             key={user.id}
-            className="flex justify-between bg-blue-900/70 p-3 rounded-xl"
+            className="flex justify-between bg-blue-900 p-3 rounded-2xl"
           >
             <span className="font-semibold">
               {index + 1} - {user.username}
