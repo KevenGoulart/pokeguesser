@@ -3,7 +3,7 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { IoReloadCircle } from "react-icons/io5";
 import { toast } from "sonner";
 import Leaderboard from "../components/leaderboard";
@@ -13,6 +13,7 @@ import formatHeight from "@/lib/format-height";
 import formatWeight from "@/lib/format-weight";
 import { addToLeaderboard } from "@/services/leaderboard";
 import { useQueryClient } from "@tanstack/react-query";
+import { FireFlame, FireFlameOption } from "@9am/fire-flame-react";
 
 export default function Home() {
   const queryClient = useQueryClient();
@@ -22,6 +23,40 @@ export default function Home() {
   const [playerName, setPlayerName] = useState("");
   const [gameStarted, setGameStarted] = useState(false);
   const [bestScore, setBestScore] = useState(0);
+
+  const instance = useRef<any | null>(null);
+
+  function getFlameColor(points: number) {
+    if (points >= 10) return { innerColor: "yellow", outerColor: "gold" };
+
+    if (points >= 8) return { innerColor: "red", outerColor: "darkred" };
+
+    if (points >= 5) return { innerColor: "orange", outerColor: "orangered" };
+
+    if (points >= 2) return { innerColor: "blue", outerColor: "blueviolet" };
+
+    return null;
+  }
+
+  const flameColor = getFlameColor(points);
+
+  const option: FireFlameOption | null = flameColor
+    ? {
+        x: 36,
+        y: 120,
+        w: 112,
+        h: 144,
+        painterType: "svg",
+        mousemove: false,
+        ...flameColor,
+      }
+    : null;
+
+  useEffect(() => {
+    if (option && instance.current) {
+      instance.current.start();
+    }
+  }, [option]);
 
   async function getRandomPokemon() {
     const id = Math.floor(Math.random() * 1025 + 1);
@@ -119,7 +154,7 @@ export default function Home() {
             height={300}
             className="border border-white/20 rounded-[60px] mb-4 bg-white/15"
           />
-          <div className="flex items-center justify-between gap-2">
+          <div className="flex items-center justify-between gap-8">
             <div className="flex flex-col gap-1 text-xl text-white/90">
               <strong>Altura: {formatHeight(data.height)} m</strong>
               <strong>Peso: {formatWeight(data.weight)} kg</strong>
@@ -131,8 +166,11 @@ export default function Home() {
                 ))}
               </div>
             </div>
-            <div className="border border-white/50 rounded-full p-1 px-3">
-              <p className="text-5xl font-bold">{points}</p>
+            <div className="rounded-full p-1 px-3 relative mt-12 mb-2">
+              <div className="max-w-28 max-h-40 absolute inset-0 z-0 flex items-center justify-center pointer-events-none">
+                {option && <FireFlame option={option} ref={instance} />}
+              </div>
+              <p className="text-6xl p-2 font-bold relative z-10">{points}</p>
             </div>
           </div>
         </div>
